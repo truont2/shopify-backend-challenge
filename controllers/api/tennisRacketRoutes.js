@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Warehouse, TennisRacket } = require('../../models');
 
-
+// retrieve all tennis rackets
 router.get('/', async (req, res) => {
     try {
         const racketData = await TennisRacket.findAll({
@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     
 })
 
+// retrieve a single racket by id
 router.get('/:id', async (req, res) => {
     try {
         const racket = await TennisRacket.findByPk(req.params.id, {
@@ -50,7 +51,7 @@ router.post('/', async (req, res) => {
    }
   });
 
-
+// update a specific racket
 router.put('/:id', async(req, res) => {
     try {
         const updatedRacket = await TennisRacket.update(req.body, {
@@ -82,7 +83,7 @@ router.put('/assign/:id', async(req, res) => {
     
 })
 
-
+// delete a specific racket
 router.delete('/:id', async (req, res) => {
     // delete one product by its `id` value
     try {
@@ -97,4 +98,5 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// export all routes
 module.exports = router;

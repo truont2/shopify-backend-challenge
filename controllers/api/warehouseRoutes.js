@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Warehouse, TennisRacket } = require('../../models');
 
-
+// retrieve all warehouses
 router.get('/', async (req, res) => {
     try {
         const warehouseData = await Warehouse.findAll({
@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     
 })
 
+// retrieve a specific warehouse
 router.get('/:id', async (req, res) => {
     try {
         const warehouse = await Warehouse.findByPk(req.params.id, {
@@ -29,7 +30,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// create new racket
+// create new warehouse
 router.post('/', async (req, res) => {
     /* req.body should look like this...
       {
@@ -46,7 +47,7 @@ router.post('/', async (req, res) => {
    }
   });
 
-
+// update a specific warehouse
 router.put('/:id', async(req, res) => {
     try {
         const updatedWarehouse = await Warehouse.update(req.body, {
@@ -62,7 +63,7 @@ router.put('/:id', async(req, res) => {
     
 })
 
-
+// delete a warehouse
 router.delete('/:id', async (req, res) => {
     // delete one warehouse by its `id` value
     try {
@@ -77,4 +78,5 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// export all routes to use
 module.exports = router;

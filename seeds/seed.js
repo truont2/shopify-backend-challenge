@@ -30,6 +30,7 @@ const warehouses = [
     }
 ]
 
+// seed databse with data
 const sequelize = require("../config/connection");
 const {Warehouse, TennisRacket} = require("../models")
 
