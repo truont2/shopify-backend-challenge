@@ -6,7 +6,7 @@ const Rackets = [
         weight: 11.3,
         balance: "6 pts HL", 
         length: 27.5,
-        warehouseId: 1
+        WarehouseId: 2,
     },
     {
         name: 'HEAD Prestige Pro 2021', 
@@ -15,7 +15,7 @@ const Rackets = [
         weight: 11.9,
         balance: "6 pts HL", 
         length: 27,
-        warehouseId: 2
+        WarehouseId: 1,
     },
 ]
 

@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
         const racketData = await TennisRacket.findAll({
             include:[Warehouse]
         }) 
-        console.log(racketData);
         res.status(200).json(racketData);
     } catch(err) {
         res.status(500).json(err);
@@ -17,14 +16,14 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const racket = TennisRacket.findByPk(req.params.id, {
+        const racket = await TennisRacket.findByPk(req.params.id, {
             include: [Warehouse]
         })
-        if(!product){
-            res.status(404).json({message: "This product does not exist!"});
+        if(!racket){
+            res.status(404).json({message: "This racket does not exist!"});
             return;
         }
-        res.status(200).json(product);
+        res.status(200).json(racket);
     }catch(err) {
         res.status(500).json(err);
     }
@@ -54,7 +53,23 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async(req, res) => {
     try {
-        const updatedRacket = await Product.update(req.body, {
+        const updatedRacket = await TennisRacket.update(req.body, {
+            where: {
+              id: req.params.id,
+            },
+          })
+
+          res.status(200).json(updatedRacket);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+    
+})
+
+// assign location if not done on creation
+router.put('/assign/:id', async(req, res) => {
+    try {
+        const updatedRacket = await TennisRacket.update(req.body, {
             where: {
               id: req.params.id,
             },
@@ -76,9 +91,10 @@ router.delete('/:id', async (req, res) => {
           id: req.params.id
         }
       })
-      console.log(deletedRacket);
       res.status(200).json(deletedRacket);
     } catch (err) {
       res.status(500).json(err)
     }
 });
+
+module.exports = router;

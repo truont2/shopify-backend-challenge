@@ -21,6 +21,7 @@ TennisRacket.init({
         type:DataTypes.STRING,
         allowNull:false,
     },
+    // in oz
     weight:{
         type:DataTypes.FLOAT,
         allowNull:false,
@@ -29,6 +30,7 @@ TennisRacket.init({
         type:DataTypes.STRING,
         allowNull:false,
     },
+    // in inches
     length:{
         type:DataTypes.FLOAT,
         allowNull:false,
