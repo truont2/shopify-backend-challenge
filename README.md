@@ -13,7 +13,7 @@ Feature included: ability to create a warehouse/locations and assign tenis racke
 - Mysql
 - Sequelize
 ## Functionality
-![API routes being tested using Insomnia](./assets/shopify.gif)
+![API routes being tested using Insomnia](./public/assets/shopify.gif)
 ## Installation (if Local Functionallity Desired)
     
 1. Clone the repo onto your local machine
